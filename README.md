@@ -1,73 +1,72 @@
-# React + TypeScript + Vite
+# Liah React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + TypeScript + Vite frontend for the Liah UI.
 
-Currently, two official plugins are available:
+## Requirements
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Docker
+- Docker Compose
 
-## React Compiler
+## Run Project
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Build and start the lightweight frontend container:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+docker compose up --build frontend
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Start it after the image already exists:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+docker compose up frontend
 ```
+
+Open:
+
+```bash
+http://127.0.0.1:5189/
+```
+
+Stop containers:
+
+```bash
+docker compose down
+```
+
+## Run Tests
+
+The e2e test container is separate from the dev container. It includes Playwright browser dependencies, so the frontend container stays light.
+
+Build the test image:
+
+```bash
+docker compose --profile test build e2e
+```
+
+Run e2e tests:
+
+```bash
+docker compose --profile test run --rm e2e
+```
+
+Pipeline command:
+
+```bash
+docker compose --profile test run --rm e2e
+```
+
+## Common Commands
+
+```bash
+docker compose up --build frontend
+docker compose up frontend
+docker compose down
+docker compose --profile test build e2e
+docker compose --profile test run --rm e2e
+```
+
+## Notes
+
+- E2E tests use mocked API responses, so tests do not depend on the live HubDiet API.
+- Do not run Playwright inside the frontend container. Browser tooling is intentionally only in the `e2e` container.
+- If Docker uses old dependencies, rebuild the relevant image with `docker compose build frontend` or `docker compose --profile test build e2e`.

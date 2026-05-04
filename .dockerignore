@@ -4,6 +4,8 @@ build
 .cache
 .vite
 coverage
+test-results
+playwright-report
 
 .git
 .gitignore
