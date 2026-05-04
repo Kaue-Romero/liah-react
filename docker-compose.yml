@@ -1,0 +1,9 @@
+services:
+  frontend:
+    build: .
+    ports:
+      - "5189:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: bun run dev

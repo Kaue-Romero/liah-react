@@ -1,0 +1,825 @@
+.liah-react-root {
+  position: relative;
+  height: 100%;
+  min-height: 560px;
+  background: var(--cinza-100);
+  color: var(--cinza-950);
+  font-family: "CircularStd-Book", "SF UI Text", Arial, sans-serif;
+  overflow: hidden;
+}
+
+.liah-react-root button,
+.liah-react-root input,
+.liah-react-root select,
+.liah-react-root textarea {
+  font: inherit;
+}
+
+.liah-react-header {
+  display: flex !important;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px 15px 12px;
+  background: var(--verde);
+  color: var(--branco);
+}
+
+.liah-react-header .header-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.liah-react-logo {
+  height: 25px;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
+.liah-react-search {
+  flex: 1;
+  min-width: 0;
+  height: 38px;
+  display: flex !important;
+  align-items: center;
+  gap: 7px;
+  padding: 0 11px;
+  border-radius: 10px;
+  background: var(--branco);
+  color: var(--cinza-700);
+}
+
+.liah-react-search input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--cinza-950);
+}
+
+#actions-header-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.liah-icon-button {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+
+.notif-dot {
+  position: absolute;
+  right: 7px;
+  top: 7px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--vermelho);
+}
+
+.liah-react-location {
+  border: 0;
+  color: var(--branco);
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  text-align: left;
+}
+
+.liah-react-header .aba-loja {
+  border: 0;
+  cursor: pointer;
+}
+
+.liah-react-frame {
+  position: relative;
+  height: calc(100% - 145px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: var(--branco);
+  border-radius: 22px 22px 0 0;
+  padding: 12px 0 110px;
+}
+
+.liah-react-section {
+  margin: 18px 0;
+}
+
+.liah-react-carousel {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 0 15px 8px;
+  scroll-snap-type: x mandatory;
+}
+
+.liah-react-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  padding: 0 15px 20px;
+}
+
+.liah-react-product {
+  flex: 0 0 var(--div-produto);
+  min-width: 160px;
+  background: var(--branco);
+  border: 1px solid var(--cinza-200);
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  scroll-snap-align: start;
+}
+
+.liah-react-grid .liah-react-product,
+.liah-react-product-compact {
+  min-width: 0;
+  width: auto;
+  flex: initial;
+}
+
+.liah-react-product-photo-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  margin-bottom: 10px;
+}
+
+.liah-react-product-photo,
+.liah-react-cart-photo,
+.liah-react-detail-image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.liah-react-rating {
+  right: 8px;
+  left: auto;
+  top: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--amarelo-500);
+}
+
+.liah-react-discount {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  border-radius: 50px;
+  padding: 3px 7px;
+  background: var(--vermelho);
+  color: var(--branco);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.liah-react-add {
+  border: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.liah-react-product-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-align: left;
+}
+
+.liah-react-product-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.liah-favorite-button {
+  border: 0;
+  color: var(--cinza-500);
+  background: transparent;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.liah-favorite-button.is-active {
+  color: var(--vermelho);
+}
+
+.liah-react-product h3 {
+  margin: 0;
+  color: var(--cinza-950);
+  font-size: 14px;
+  line-height: 1.28;
+  font-weight: 600;
+}
+
+.liah-react-price {
+  min-height: 22px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.liah-react-old-price {
+  color: var(--cinza-500);
+  font-size: 13px;
+  text-decoration: line-through;
+}
+
+.liah-react-banners {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 4px 15px 10px;
+}
+
+.liah-react-banners button {
+  flex: 0 0 78%;
+  height: 96px;
+  border: 0;
+  border-radius: 8px;
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.liah-react-cart-fab {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.liah-react-cart-fab button {
+  min-width: 220px;
+  pointer-events: auto;
+  border: 0;
+  border-radius: 50px;
+  background: var(--verde);
+  color: var(--branco);
+  padding: 13px 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  font-weight: 600;
+  box-shadow: 0 10px 28px var(--preto-op1);
+}
+
+.liah-react-cart-fab strong {
+  min-width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--branco);
+  color: var(--verde);
+  font-size: 11px;
+}
+
+.liah-react-backtop {
+  position: fixed;
+  right: 14px;
+  z-index: 19;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--cinza-op1);
+  color: var(--branco);
+}
+
+.liah-react-modal-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 998;
+}
+
+.liah-react-scrim {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: var(--preto-op2);
+}
+
+.liah-react-modal {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: min(92vh, 760px);
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px 20px 0 0;
+  background: var(--branco);
+  overflow: hidden;
+}
+
+.liah-react-modal-header {
+  min-height: 64px;
+  padding: 16px 18px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--cinza-200);
+}
+
+.liah-react-modal-header h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.liah-react-modal-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 16px 18px 28px;
+}
+
+.liah-react-modal-footer {
+  padding: 12px 18px 18px;
+  border-top: 1px solid var(--cinza-200);
+  background: var(--branco);
+}
+
+.liah-react-cart-items,
+.liah-react-notification-list,
+.liah-react-orders,
+.liah-react-profile,
+.liah-react-faq {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.liah-react-cart-item {
+  display: grid;
+  grid-template-columns: 86px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+}
+
+.liah-react-cart-photo {
+  border: 0;
+  border-radius: 8px;
+  aspect-ratio: 1 / 1;
+  background-color: var(--cinza-100);
+}
+
+.liah-react-cart-copy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+}
+
+.liah-react-cart-copy span {
+  color: var(--cinza-700);
+  font-size: 12px;
+}
+
+.liah-react-cart-copy strong {
+  font-size: 14px;
+  line-height: 1.28;
+}
+
+.liah-react-qty {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.liah-react-qty .btns-cart {
+  border: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.liah-react-summary {
+  padding: 12px 0;
+}
+
+.liah-react-pay-button {
+  border: 0;
+  width: 100%;
+  cursor: pointer;
+}
+
+.liah-react-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.liah-react-inline-form {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  background: var(--cinza-100);
+}
+
+.liah-react-form label,
+.liah-react-checkout-section label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.liah-react-form input,
+.liah-react-form select,
+.liah-react-form textarea,
+.liah-react-coupon-row input {
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid var(--cinza-300);
+  border-radius: 8px;
+  padding: 0 11px;
+  background: var(--branco);
+  color: var(--cinza-950);
+}
+
+.primary-btn,
+.secondary-btn {
+  min-height: 44px;
+  border-radius: 8px;
+  border: 0;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.primary-btn {
+  background: var(--verde);
+  color: var(--branco);
+}
+
+.secondary-btn {
+  background: var(--cinza-100);
+  color: var(--cinza-950);
+}
+
+.liah-link-button {
+  border: 0;
+  background: transparent;
+  color: var(--verde);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.liah-react-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.liah-react-tabs button {
+  min-height: 40px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--cinza-100);
+  color: var(--cinza-900);
+  font-weight: 700;
+}
+
+.liah-react-tabs button.is-active {
+  background: var(--verde);
+  color: var(--branco);
+}
+
+.liah-react-checkout-section,
+.liah-react-profile section,
+.liah-react-notification-groups section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--cinza-200);
+}
+
+.liah-react-checkout-section h3,
+.liah-react-profile h3,
+.liah-react-notification-groups h3 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 17px;
+}
+
+.liah-react-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.liah-react-options label {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding: 11px;
+  border-radius: 8px;
+  background: var(--cinza-100);
+}
+
+.liah-react-options span {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-weight: 400;
+}
+
+.liah-react-warning {
+  padding: 10px;
+  border-radius: 8px;
+  background: var(--amarelo-100);
+  color: var(--cinza-950);
+  font-size: 13px;
+}
+
+.liah-react-coupon-row,
+.liah-react-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.liah-react-coupon-row input {
+  flex: 1;
+}
+
+.liah-react-applied-coupon {
+  padding: 9px 11px;
+  border-radius: 8px;
+  background: var(--verde-op4);
+  color: var(--verde);
+  font-weight: 700;
+}
+
+.liah-react-total {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.liah-react-pix,
+.liah-react-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.liah-react-pix img {
+  width: 180px;
+  max-width: 70%;
+  aspect-ratio: 1 / 1;
+}
+
+.liah-react-pix textarea {
+  width: 100%;
+  height: 110px;
+  border: 1px solid var(--cinza-300);
+  border-radius: 8px;
+  padding: 10px;
+  resize: none;
+}
+
+.liah-react-product-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.liah-react-detail-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+  background-color: var(--cinza-100);
+}
+
+.liah-react-detail-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.liah-react-detail-heading span {
+  color: var(--cinza-700);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.liah-react-detail-heading h3 {
+  margin: 5px 0 0;
+  font-size: 22px;
+  line-height: 1.18;
+}
+
+.liah-react-stars,
+.liah-react-rating-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--amarelo-500);
+}
+
+.liah-react-rating-actions button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.liah-react-price-detail {
+  font-size: 20px;
+}
+
+.liah-react-detail-qty {
+  width: fit-content;
+  gap: 18px;
+}
+
+.liah-react-detail-qty button {
+  border: 0;
+  background: transparent;
+  display: inline-flex;
+}
+
+.liah-react-description {
+  margin: 0;
+  white-space: pre-wrap;
+  line-height: 1.45;
+  color: var(--cinza-900);
+}
+
+.liah-react-notification-list article,
+.liah-react-orders article,
+.liah-react-faq details {
+  padding: 12px;
+  border: 1px solid var(--cinza-200);
+  border-radius: 8px;
+  background: var(--branco);
+}
+
+.liah-react-notification-list article {
+  display: flex;
+  gap: 12px;
+}
+
+.liah-react-notification-list article.is-unread {
+  border-color: var(--verde);
+}
+
+.liah-react-notification-list img {
+  width: 54px;
+  height: 54px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.liah-react-orders article {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.liah-react-state-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.liah-react-state-grid button {
+  min-height: 44px;
+  border: 1px solid var(--cinza-300);
+  border-radius: 8px;
+  background: var(--branco);
+  font-weight: 700;
+}
+
+.liah-react-state-grid button.is-active {
+  border-color: var(--verde);
+  background: var(--verde-op4);
+  color: var(--verde);
+}
+
+.liah-react-empty,
+.liah-react-loading-message {
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 30px;
+  text-align: center;
+  color: var(--cinza-900);
+}
+
+.liah-react-empty img {
+  width: 150px;
+  max-width: 60%;
+}
+
+.liah-react-empty strong {
+  font-size: 18px;
+  color: var(--cinza-950);
+}
+
+.liah-react-empty p {
+  margin: 0;
+}
+
+.liah-react-loading {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 18px 15px;
+}
+
+.liah-react-loading > .preloadLight {
+  height: 76px;
+  border-radius: 10px;
+}
+
+.liah-react-loading-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.liah-react-loading-grid .preloadLight {
+  height: 156px;
+  border-radius: 10px;
+}
+
+.liah-react-toast-success {
+  border-color: var(--verde);
+}
+
+.liah-react-toast-error {
+  border-color: var(--vermelho);
+}
+
+@media (min-width: 768px) {
+  .liah-react-root {
+    max-width: 700px;
+    margin: 0 auto;
+    box-shadow: 0 0 0 1px var(--cinza-200);
+  }
+
+  .liah-react-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .liah-react-modal {
+    left: 50%;
+    right: auto;
+    width: min(700px, 100vw);
+    transform: translateX(-50%);
+  }
+}
