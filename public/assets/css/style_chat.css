@@ -1,0 +1,407 @@
+/*--------------------
+Mixins
+--------------------*/
+/*--------------------
+Body
+--------------------*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+
+.bg {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background: #fff;
+}
+
+/*--------------------
+Chat
+--------------------*/
+.chat {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  z-index: 2;
+  overflow: hidden;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+
+/*--------------------
+Chat Title
+--------------------*/
+.chat-title {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 45px;
+      -ms-flex: 0 1 45px;
+          flex: 0 1 45px;
+  position: relative;
+  z-index: 2;
+  background: #fff;
+  color: #444;
+  font-weight: 700;
+  text-align: left;
+  padding: 40px 20px 20px 20px;
+  font-size: 30px;
+}
+
+.chat-subtitle { position: fixed; top: 100px; left: 0px; background: #fff; width: 100%; z-index: 8; font-size: 14px; font-weight: 400;  padding: 10px 20px; margin-top: -20px }
+
+.fecharChat { position: fixed; top: 5px; left: calc(100% - 60px); width: 40px; height: 40px; z-index: 9; font-size: 23px; line-height: 40px; text-align: center }
+
+/*--------------------
+Messages
+--------------------*/
+.messages {
+  margin-top: 25px;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  font-weight: 400;
+}
+.messages .messages-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.messages .message {
+  clear: both;
+  float: left;
+  background: #626262;
+  margin: 8px 0;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-left: 0px;
+  position: relative;
+  padding: 10px 15px; 
+  border-radius: 15px; 
+}
+.messages .message .timestamp {
+  position: absolute;
+  bottom: -15px;
+  font-size: 9px;
+  color: #999;
+}
+
+.messages .message.message-personal {
+  float: right;
+  color: #fff;
+  text-align: right;
+  background: #3466C7;
+  border-radius: 15px; 
+}
+.messages .message.message-personal::before {
+  left: auto;
+  right: 0;
+  border-right: none;
+  border-left: 5px solid transparent;
+  border-top: 4px solid #257287;
+  bottom: -4px;
+}
+.messages .message:last-child {
+  margin-bottom: 30px;
+}
+.messages .message.new {
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-animation: bounce 500ms linear both;
+          animation: bounce 500ms linear both;
+}
+.messages .message.loading::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  content: '';
+  display: block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 2;
+  margin-top: 4px;
+  -webkit-animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
+          animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
+  border: none;
+  -webkit-animation-delay: .15s;
+          animation-delay: .15s;
+}
+.messages .message.loading span {
+  display: block;
+  font-size: 0;
+  width: 20px;
+  height: 10px;
+  position: relative;
+}
+.messages .message.loading span::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  content: '';
+  display: block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 2;
+  margin-top: 4px;
+  -webkit-animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
+          animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
+  margin-left: -7px;
+}
+.messages .message.loading span::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  content: '';
+  display: block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 2;
+  margin-top: 4px;
+  -webkit-animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
+          animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
+  margin-left: 7px;
+  -webkit-animation-delay: .3s;
+          animation-delay: .3s;
+}
+
+/*--------------------
+Message Box
+--------------------*/
+.message-box {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 40px;
+      -ms-flex: 0 1 40px;
+          flex: 0 1 40px;
+  width: 100%;
+  background: #fff;
+  padding: 10px;
+  position: relative;
+  border-top: 1px solid #999;
+  border-bottom: 1px solid #999;
+}
+.message-box .message-input {
+  background: none;
+  border: none;
+  outline: none !important;
+  resize: none;
+  color: #444;
+  font-size: 14px;
+  height: 40px;
+  margin: 0;
+  padding-right: 20px;
+  width: calc(100% - 80px);
+}
+.message-box textarea:focus:-webkit-placeholder {
+  color: transparent;
+}
+.message-box .message-submit {
+  position: absolute;
+  z-index: 1;
+  top: 0px;
+  right: 0px;
+  color: #fff;
+  border: none;
+  background: #C94E47;
+  font-size: 14px;
+  text-transform: uppercase;
+  line-height: 1;
+  padding: 25px 15px;
+  outline: none !important;
+}
+
+/*--------------------
+Custom Srollbar
+--------------------*/
+.mCSB_scrollTools {
+  margin: 1px -3px 1px 0;
+  opacity: 0;
+}
+
+.mCSB_inside > .mCSB_container {
+  margin-right: 0px;
+  padding: 0 10px;
+}
+
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+/*--------------------
+Bounce
+--------------------*/
+@-webkit-keyframes bounce {
+  0% {
+    -webkit-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  4.7% {
+    -webkit-transform: matrix3d(0.45, 0, 0, 0, 0, 0.45, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            transform: matrix3d(0.45, 0, 0, 0, 0, 0.45, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  9.41% {
+    -webkit-transform: matrix3d(0.883, 0, 0, 0, 0, 0.883, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            transform: matrix3d(0.883, 0, 0, 0, 0, 0.883, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  14.11% {
+    -webkit-transform: matrix3d(1.141, 0, 0, 0, 0, 1.141, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            transform: matrix3d(1.141, 0, 0, 0, 0, 1.141, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  18.72% {
+    -webkit-transform: matrix3d(1.212, 0, 0, 0, 0, 1.212, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            transform: matrix3d(1.212, 0, 0, 0, 0, 1.212, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  24.32% {
+    -webkit-transform: matrix3d(1.151, 0, 0, 0, 0, 1.151, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            transform: matrix3d(1.151, 0, 0, 0, 0, 1.151, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  29.93% {
+    -webkit-transform: matrix3d(1.048, 0, 0, 0, 0, 1.048, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            transform: matrix3d(1.048, 0, 0, 0, 0, 1.048, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  35.54% {
+    -webkit-transform: matrix3d(0.979, 0, 0, 0, 0, 0.979, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            transform: matrix3d(0.979, 0, 0, 0, 0, 0.979, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  41.04% {
+    -webkit-transform: matrix3d(0.961, 0, 0, 0, 0, 0.961, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            transform: matrix3d(0.961, 0, 0, 0, 0, 0.961, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  52.15% {
+    -webkit-transform: matrix3d(0.991, 0, 0, 0, 0, 0.991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            transform: matrix3d(0.991, 0, 0, 0, 0, 0.991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  63.26% {
+    -webkit-transform: matrix3d(1.007, 0, 0, 0, 0, 1.007, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            transform: matrix3d(1.007, 0, 0, 0, 0, 1.007, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  85.49% {
+    -webkit-transform: matrix3d(0.999, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            transform: matrix3d(0.999, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  100% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+}
+@keyframes bounce {
+  0% {
+    -webkit-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  4.7% {
+    -webkit-transform: matrix3d(0.45, 0, 0, 0, 0, 0.45, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            transform: matrix3d(0.45, 0, 0, 0, 0, 0.45, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  9.41% {
+    -webkit-transform: matrix3d(0.883, 0, 0, 0, 0, 0.883, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            transform: matrix3d(0.883, 0, 0, 0, 0, 0.883, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  14.11% {
+    -webkit-transform: matrix3d(1.141, 0, 0, 0, 0, 1.141, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            transform: matrix3d(1.141, 0, 0, 0, 0, 1.141, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  18.72% {
+    -webkit-transform: matrix3d(1.212, 0, 0, 0, 0, 1.212, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            transform: matrix3d(1.212, 0, 0, 0, 0, 1.212, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  24.32% {
+    -webkit-transform: matrix3d(1.151, 0, 0, 0, 0, 1.151, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            transform: matrix3d(1.151, 0, 0, 0, 0, 1.151, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  29.93% {
+    -webkit-transform: matrix3d(1.048, 0, 0, 0, 0, 1.048, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            transform: matrix3d(1.048, 0, 0, 0, 0, 1.048, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  35.54% {
+    -webkit-transform: matrix3d(0.979, 0, 0, 0, 0, 0.979, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            transform: matrix3d(0.979, 0, 0, 0, 0, 0.979, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  41.04% {
+    -webkit-transform: matrix3d(0.961, 0, 0, 0, 0, 0.961, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            transform: matrix3d(0.961, 0, 0, 0, 0, 0.961, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  52.15% {
+    -webkit-transform: matrix3d(0.991, 0, 0, 0, 0, 0.991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            transform: matrix3d(0.991, 0, 0, 0, 0, 0.991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  63.26% {
+    -webkit-transform: matrix3d(1.007, 0, 0, 0, 0, 1.007, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            transform: matrix3d(1.007, 0, 0, 0, 0, 1.007, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  85.49% {
+    -webkit-transform: matrix3d(0.999, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            transform: matrix3d(0.999, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  100% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+}
+@-webkit-keyframes ball {
+  from {
+    -webkit-transform: translateY(0) scaleY(0.8);
+            transform: translateY(0) scaleY(0.8);
+  }
+  to {
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+  }
+}
+@keyframes ball {
+  from {
+    -webkit-transform: translateY(0) scaleY(0.8);
+            transform: translateY(0) scaleY(0.8);
+  }
+  to {
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+  }
+}

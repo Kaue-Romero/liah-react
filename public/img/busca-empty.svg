@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="140" viewBox="0 0 180 140" role="img" aria-labelledby="title">
+  <title id="title">Nenhum produto encontrado</title>
+  <rect x="36" y="24" width="84" height="84" rx="18" fill="#eff2f0"/>
+  <circle cx="76" cy="64" r="22" fill="#fff" stroke="#448f71" stroke-width="8"/>
+  <path d="m93 81 25 25" stroke="#448f71" stroke-width="10" stroke-linecap="round"/>
+  <path d="M52 122h76" stroke="#b7d1c5" stroke-width="8" stroke-linecap="round"/>
+</svg>
