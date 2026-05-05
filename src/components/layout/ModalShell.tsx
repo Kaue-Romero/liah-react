@@ -6,22 +6,23 @@ interface ModalShellProps {
   onClose: () => void;
   footer?: ReactNode;
   children: ReactNode;
+  className?: string;
 }
 
-export function ModalShell({ title, onClose, footer, children }: ModalShellProps) {
+export function ModalShell({ title, onClose, footer, children, className = '' }: ModalShellProps) {
   return (
-    <div className="modal-liah liah-react-modal" role="dialog" aria-modal="true" aria-label={title}>
-      <div className="liah-react-modal-backdrop" onClick={onClose} />
-      <div className="liah-react-modal-panel">
-        <div className="liah-react-modal-header">
+    <div className="liah-react-modal-layer">
+      <button className="liah-react-scrim" type="button" aria-label="Fechar" onClick={onClose} />
+      <section className={`liah-react-modal ${className}`} role="dialog" aria-modal="true" aria-label={title}>
+        <header className="liah-react-modal-header">
           <h2>{title}</h2>
-          <button type="button" aria-label="Fechar" onClick={onClose}>
-            <X size={20} aria-hidden="true" />
+          <button className="liah-icon-button" type="button" aria-label="Fechar" onClick={onClose}>
+            <X size={22} aria-hidden="true" />
           </button>
-        </div>
+        </header>
         <div className="liah-react-modal-body">{children}</div>
-        {footer ? <div className="liah-react-modal-footer">{footer}</div> : null}
-      </div>
+        {footer ? <footer className="liah-react-modal-footer">{footer}</footer> : null}
+      </section>
     </div>
   );
 }
