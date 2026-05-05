@@ -8,6 +8,8 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
+    environment:
+      VITE_HMR_CLIENT_PORT: 5189
     command: bun run dev
 
   e2e:
