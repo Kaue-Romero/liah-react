@@ -1,6 +1,5 @@
-import { Bell, ListChecks, MapPin, Menu, Search, ShoppingBag } from 'lucide-react';
+import { Bell, ChevronDown, ListChecks, MapPin, Menu, Search, ShoppingBag } from 'lucide-react';
 import type { LiahConfig } from '../types';
-import { assetUrl } from '../utils/env';
 
 interface HeaderProps {
   config: LiahConfig;
@@ -17,7 +16,6 @@ interface HeaderProps {
 }
 
 export function Header({
-  config,
   query,
   activeTab,
   storeMode,
@@ -30,46 +28,47 @@ export function Header({
   onOpenState
 }: HeaderProps) {
   return (
-    <header className="header-liah liah-react-header">
-      <div className="header-row" id="header-logo">
-        <img
-          className="liah-react-logo"
-          src={assetUrl(`img/logo/${config.empresa || 1}_v2.png`)}
-          onError={(event) => {
-            event.currentTarget.src = assetUrl('img/logo.png');
-          }}
-          alt=""
-        />
-        <label className="liah-busca liah-react-search" htmlFor="barraBuscaProdutos">
-          <Search size={18} aria-hidden="true" />
+    <header className="header-liah ">
+      <div className="bg-primary text-primary-foreground px-5 pt-6 pb-8 rounded-b-[28px] -mb-6">
+        <div className="flex items-center justify-between">
+          <div className="font-semibold text-lg tracking-tight">
+            <span className="italic">liah</span> + webdiet
+          </div>
+          <div className="flex items-center gap-3">
+            <button type="button" aria-label="Abrir notificações" onClick={onOpenNotifications} className="relative">
+              <Bell size={22} aria-hidden="true" />
+              {unreadNotifications ? <span className="notif-dot" /> : null}
+            </button>
+            <button type="button" aria-label="Abrir perfil" onClick={onOpenProfile}>
+              <Menu size={22} aria-hidden="true" />
+            </button>
+          </div>
+        </div>
+
+        {storeMode ? (
+          <button type="button" onClick={onOpenState} className="flex items-center gap-2 mt-4 text-sm w-full text-left">
+            <MapPin size={16} aria-hidden="true" />
+            <span className="opacity-90">Sua Localização:</span>
+            <span className="font-semibold">{selectedState || 'SP'}</span>
+            <ChevronDown size={14} aria-hidden="true" />
+          </button>
+        ) : null}
+
+        <div className="mt-3 bg-background text-foreground rounded-full flex items-center gap-2 px-4 py-2.5">
+          <Search size={18} className="text-muted-foreground" aria-hidden="true" />
           <input
-            type="search"
-            autoComplete="off"
             id="barraBuscaProdutos"
             name="busca-produtos"
-            placeholder="Buscar na loja Liah"
+            type="search"
+            autoComplete="off"
             spellCheck={false}
+            placeholder="Buscar na loja Liah"
             value={query}
             onChange={(event) => onQueryChange(event.target.value)}
+            className="bg-transparent flex-1 outline-none text-sm placeholder:text-muted-foreground"
           />
-        </label>
-        <div id="actions-header-btn">
-          <button id="bell-btn" className="liah-icon-button" type="button" aria-label="Abrir notificações" onClick={onOpenNotifications}>
-            <Bell size={22} aria-hidden="true" />
-            {unreadNotifications ? <span className="notif-dot" /> : null}
-          </button>
-          <button id="perfil-btn" className="liah-icon-button" type="button" aria-label="Abrir perfil" onClick={onOpenProfile}>
-            <Menu size={24} aria-hidden="true" />
-          </button>
         </div>
       </div>
-
-      {storeMode ? (
-        <button className="titulo-categoria liah-react-location" type="button" onClick={onOpenState}>
-          <MapPin size={15} aria-hidden="true" />
-          <span>{selectedState ? `Sua Localização: ${selectedState}` : 'Adicionar localização'}</span>
-        </button>
-      ) : null}
 
       <div className="header-row header-extras">
         <div id="abas-loja">

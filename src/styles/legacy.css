@@ -1,7 +1,6 @@
 /* @import url('font-awesome.min.css');
 @import url('LineIcons.min.css'); */
 @import url('/assets/css/sweetalert2.css');
-@import url('/assets/css/bootstrap.min.css');
 @import url('/assets/css/ispinner.css');
 @import url('/assets/css/photoswipe.css');
 @import url('/assets/css/animate.css');
@@ -71,6 +70,29 @@
 
     --cor-categoria-ativa: var(--verde);
 
+    --radius: 1rem;
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.18 0.01 200);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.18 0.01 200);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.18 0.01 200);
+    --primary: oklch(0.58 0.06 155);
+    --primary-foreground: oklch(1 0 0);
+    --primary-soft: oklch(0.94 0.03 155);
+    --secondary: oklch(0.96 0.01 200);
+    --secondary-foreground: oklch(0.2 0.01 200);
+    --muted: oklch(0.96 0.005 200);
+    --muted-foreground: oklch(0.55 0.01 200);
+    --accent: oklch(0.94 0.03 155);
+    --accent-foreground: oklch(0.35 0.05 155);
+    --destructive: oklch(0.62 0.2 25);
+    --destructive-foreground: oklch(1 0 0);
+    --border: oklch(0.92 0.005 200);
+    --input: oklch(0.95 0.005 200);
+    --ring: oklch(0.58 0.06 155);
+    --promo: oklch(0.7 0.18 45);
+
 }
 
 
@@ -87,7 +109,6 @@
     width: 100%;
     /* height: 80px; */
     text-align: left;
-    padding: 35px 0;
     background: var(--verde);
     z-index: 9;
     display: flex;
