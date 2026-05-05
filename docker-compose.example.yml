@@ -11,8 +11,6 @@ services:
     environment:
       VITE_HMR_CLIENT_PORT: 5189
     command: bun run dev
-    networks:
-      - liah-backend-laravel_app
 
   e2e:
     build:
@@ -23,7 +21,3 @@ services:
     environment:
       CI: "true"
     command: bun run test:e2e
-
-networks:
-  liah-backend-laravel_app:
-    external: true

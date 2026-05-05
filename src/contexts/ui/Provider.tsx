@@ -4,11 +4,22 @@ import { UiContext } from './context';
 
 export function UiProvider({ children }: { children: ReactNode }) {
   const frameRef = useRef<HTMLElement | null>(null);
-  const [modal, setModal] = useState<ModalName>(null);
+  const [modalStack, setModalStack] = useState<ModalName[]>([]);
   const [showBackTop, setShowBackTop] = useState(false);
 
-  const openModal = useCallback((nextModal: ModalName) => setModal(nextModal), []);
-  const closeModal = useCallback(() => setModal(null), []);
+  const modal = modalStack[modalStack.length - 1] ?? null;
+
+  const openModal = useCallback((next: ModalName) => {
+    setModalStack((s) => (s[s.length - 1] === next ? s : [...s, next]));
+  }, []);
+
+  const closeModal = useCallback(() => {
+    setModalStack((s) => s.slice(0, -1));
+  }, []);
+
+  const closeAllModals = useCallback(() => {
+    setModalStack([]);
+  }, []);
 
   const handleFrameScroll = useCallback((event: UIEvent<HTMLElement>) => {
     const shouldShow = event.currentTarget.scrollTop > 80;
@@ -20,7 +31,7 @@ export function UiProvider({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <UiContext.Provider value={{ modal, frameRef, showBackTop, openModal, closeModal, handleFrameScroll, scrollToTop }}>
+    <UiContext.Provider value={{ modal, modalStack, frameRef, showBackTop, openModal, closeModal, closeAllModals, handleFrameScroll, scrollToTop }}>
       {children}
     </UiContext.Provider>
   );

@@ -5,8 +5,8 @@ export function assetUrl(path: string): string {
 
 export function apiBaseUrl(): string {
   if (typeof window === 'undefined') {
-    return 'https://hubdiet.com/api_app/';
+    return 'http://localhost:8085/api/api_app/';
   }
 
-  return window.url_apis || 'https://hubdiet.com/api_app/';
+  return window.url_apis || 'http://localhost:8085/api/api_app/';
 }
