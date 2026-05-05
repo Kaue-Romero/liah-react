@@ -1,3 +1,5 @@
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
 import { ArrowUp, ShoppingCart } from 'lucide-react';
 import { api } from '../../api/client';
 import { AppModals } from '../../app/AppModals';
@@ -43,7 +45,7 @@ export function StorePage() {
           <Loading />
         ) : Object.keys(products).length ? (
           <>
-            {banners.length ? <BannerStrip /> : null}
+            {banners.length  ? <BannerStrip /> : null}
             <ProductSections />
           </>
         ) : (
@@ -79,18 +81,22 @@ export function StorePage() {
 
 function BannerStrip() {
   const { banners } = useCatalog();
+  const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay({ delay: 5000, stopOnInteraction: true })]);
 
   return (
-    <section className="liah-react-banners">
-      {banners.slice(0, 4).map((banner, index) => (
-        <button
-          type="button"
-          key={`${banner.id || banner.url || index}`}
-          style={{ backgroundImage: `url(${banner.url || banner.image || banner.banner?.url || assetUrl('img/loading.gif')})` }}
-          onClick={() => void api.logBannerView({ id: banner.id || banner.banner?.id || '', tipo: 'click' })}
-          aria-label="Banner Liah"
-        />
-      ))}
-    </section>
+    <div className="liah-react-banners" ref={emblaRef}>
+      <div className="liah-react-banners__container">
+        {banners.map((banner, index) => (
+          <button
+            type="button"
+            key={`${banner.id || banner.url || index}`}
+            className="liah-react-banners__slide"
+            style={{ backgroundImage: `url(${banner.url || banner.image || banner.banner?.url || assetUrl('img/loading.gif')})` }}
+            onClick={() => void api.logBannerView({ id: banner.id || banner.banner?.id || '', tipo: 'click' })}
+            aria-label="Banner Liah"
+          />
+        ))}
+      </div>
+    </div>
   );
 }

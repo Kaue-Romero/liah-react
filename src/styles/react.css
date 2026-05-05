@@ -253,15 +253,18 @@
 }
 
 .liah-react-banners {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
+  overflow: hidden;
   padding: 4px 15px 10px;
 }
 
-.liah-react-banners button {
-  flex: 0 0 78%;
-  height: 96px;
+.liah-react-banners__container {
+  display: flex;
+}
+
+.liah-react-banners__slide {
+  flex: 0 0 calc(100% - 0px);
+  margin-right: 10px;
+  height: 200px;
   border: 0;
   border-radius: 8px;
   background-position: center;
