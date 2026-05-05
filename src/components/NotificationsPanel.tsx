@@ -32,7 +32,7 @@ function NotificationGroup({ title, items }: { title: string; items: Notificatio
         <div className="liah-react-notification-list">
           {items.map((item, index) => (
             <article className={item.status === 'nao_lida' ? 'is-unread' : ''} key={`${item.id || item.titulo}-${index}`}>
-              {item.image ? <img src={item.image} width={54} height={54} loading="lazy" alt="" /> : null}
+              {item.image ? <img src={item.image} alt="" /> : null}
               <div>
                 <strong>{item.titulo}</strong>
                 {item.subtitulo ? <span>{item.subtitulo}</span> : null}

@@ -34,11 +34,9 @@ export function Header({
       <div className="header-row" id="header-logo">
         <img
           className="liah-react-logo"
-          src={assetUrl(`img/logo/${config.empresa || 1}_v2.svg`)}
-          width={132}
-          height={40}
+          src={assetUrl(`img/logo/${config.empresa || 1}_v2.png`)}
           onError={(event) => {
-            event.currentTarget.src = assetUrl('img/logo.svg');
+            event.currentTarget.src = assetUrl('img/logo.png');
           }}
           alt=""
         />
@@ -49,7 +47,7 @@ export function Header({
             autoComplete="off"
             id="barraBuscaProdutos"
             name="busca-produtos"
-            placeholder="Buscar na loja Liah…"
+            placeholder="Buscar na loja Liah"
             spellCheck={false}
             value={query}
             onChange={(event) => onQueryChange(event.target.value)}

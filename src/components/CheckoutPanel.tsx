@@ -243,7 +243,7 @@ export function CheckoutPanel({
   if (!userInfo) {
     return (
       <ModalShell title="Checkout" onClose={onClose}>
-        <div className="liah-react-loading-message">Carregando dados de pagamento…</div>
+        <div className="liah-react-loading-message">Carregando dados de pagamento...</div>
       </ModalShell>
     );
   }
@@ -508,7 +508,7 @@ export function CheckoutPanel({
             spellCheck={false}
             value={manualCoupon}
             onChange={(event) => setManualCoupon(event.target.value.toUpperCase())}
-            placeholder="Digite seu cupom…"
+            placeholder="Digite seu cupom"
           />
           <button className="secondary-btn" disabled={saving || !manualCoupon.trim()} type="button" onClick={() => void validateCoupon()}>
             Aplicar

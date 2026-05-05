@@ -77,7 +77,7 @@ test.beforeEach(async ({ page }) => {
 test('renders recommendations from mocked API', async ({ page }) => {
   await page.goto('/');
 
-  await expect(page.getByPlaceholder('Buscar na loja Liah…')).toBeVisible();
+  await expect(page.getByPlaceholder('Buscar na loja Liah')).toBeVisible();
   await expect(page.getByText('Prescrição')).toBeVisible();
   await expect(page.getByText('Whey Protein - 900g - Baunilha')).toBeVisible();
 });
@@ -85,7 +85,7 @@ test('renders recommendations from mocked API', async ({ page }) => {
 test('search filters products and opens cart modal', async ({ page }) => {
   await page.goto('/');
 
-  await page.getByPlaceholder('Buscar na loja Liah…').fill('whey');
+  await page.getByPlaceholder('Buscar na loja Liah').fill('whey');
   await expect(page.getByText('Whey Protein - 900g - Baunilha')).toBeVisible();
 
   await page.getByLabel('Adicionar produto').click();

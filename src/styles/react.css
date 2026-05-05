@@ -15,25 +15,6 @@
   font: inherit;
 }
 
-.liah-react-root {
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.liah-react-root button:hover,
-.liah-react-root [role='button']:hover {
-  filter: brightness(0.98);
-}
-
-.liah-react-root button:focus-visible,
-.liah-react-root [role='button']:focus-visible,
-.liah-react-root input:focus-visible,
-.liah-react-root select:focus-visible,
-.liah-react-root textarea:focus-visible {
-  outline: 3px solid var(--verde-200);
-  outline-offset: 3px;
-}
-
 .liah-react-header {
   display: flex !important;
   flex-direction: column;
@@ -72,7 +53,7 @@
   width: 100%;
   min-width: 0;
   border: 0;
-  outline: 2px solid transparent;
+  outline: 0;
   background: transparent;
   color: var(--cinza-950);
 }
@@ -143,8 +124,6 @@
   overflow-x: auto;
   padding: 0 15px 8px;
   scroll-snap-type: x mandatory;
-  content-visibility: auto;
-  contain-intrinsic-size: auto 260px;
 }
 
 .liah-react-grid {
@@ -344,7 +323,6 @@
   position: fixed;
   inset: 0;
   z-index: 998;
-  overscroll-behavior: contain;
 }
 
 .liah-react-scrim {
@@ -387,7 +365,6 @@
   flex: 1;
   min-height: 0;
   overflow-y: auto;
-  overscroll-behavior: contain;
   padding: 16px 18px 28px;
 }
 
@@ -437,7 +414,6 @@
 .liah-react-cart-copy strong {
   font-size: 14px;
   line-height: 1.28;
-  overflow-wrap: anywhere;
 }
 
 .liah-react-qty {
@@ -681,7 +657,6 @@
   margin: 5px 0 0;
   font-size: 22px;
   line-height: 1.18;
-  text-wrap: balance;
 }
 
 .liah-react-stars,
@@ -728,7 +703,6 @@
   border: 1px solid var(--cinza-200);
   border-radius: 8px;
   background: var(--branco);
-  overflow-wrap: anywhere;
 }
 
 .liah-react-notification-list article {
@@ -789,13 +763,11 @@
 .liah-react-empty img {
   width: 150px;
   max-width: 60%;
-  height: auto;
 }
 
 .liah-react-empty strong {
   font-size: 18px;
   color: var(--cinza-950);
-  text-wrap: balance;
 }
 
 .liah-react-empty p {
@@ -831,17 +803,6 @@
 
 .liah-react-toast-error {
   border-color: var(--vermelho);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .liah-react-root *,
-  .liah-react-root *::before,
-  .liah-react-root *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
-  }
 }
 
 @media (min-width: 768px) {
